@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Loja DBE Revolution</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at center, #0a0a0a, #000);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* PARTICULAS */
+body::after {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,140,0,0.1), transparent 70%);
+  animation: aura 12s linear infinite;
+}
+
+@keyframes aura {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+header {
+  background: linear-gradient(90deg, orange, gold);
+  padding: 25px;
+  font-size: 32px;
+  font-weight: bold;
+  box-shadow: 0 0 25px orange;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px 10px;
+}
+
+.kit {
+  background: #111;
+  border: 2px solid rgba(255,165,0,0.4);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 15px;
+  width: 260px;
+  transition: 0.3s;
+  position: relative;
+}
+
+.kit:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px orange;
+}
+
+.kit img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 15px orange;
+}
+
+.kit h2 {
+  color: gold;
+}
+
+.price {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin: 10px 0;
+  text-align: center;
+}
+
+button {
+  background: linear-gradient(90deg, orange, gold);
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.copy {
+  background: #333;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+/* BOTÃO DISCORD FIXO */
+.discord-fixo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #5865F2;
+  padding: 15px 18px;
+  border-radius: 50px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 15px #5865F2;
+  transition: 0.3s;
+}
+
+.discord-fixo:hover {
+  transform: scale(1.1);
+}
+
+/* RODAPÉ */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  color: #aaa;
+}
+
+.discord-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #5865F2;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+}
+</style>
+
+<script>
+function gerarMensagem(kit, inputId) {
+  let nick = document.getElementById(inputId).value;
+
+  if(nick === "") {
+    alert("Digite seu nick!");
+    return null;
+  }
+
+  return `Comprei o ${kit} | Nick: ${nick}`;
+}
+
+function copiar(kit, inputId) {
+  let msg = gerarMensagem(kit, inputId);
+  if(!msg) return;
+
+  navigator.clipboard.writeText(msg);
+  alert("Mensagem copiada!");
+}
+
+function comprar(link, kit, inputId) {
+  let msg = gerarMensagem(kit, inputId);
+  if(!msg) return;
+
+  window.open(link, "_blank");
+
+  alert("Após pagar, envie no Discord:\n\n" + msg + "\n\nDiscord: https://discord.gg/Vtz2NQy9Nu");
+}
+</script>
+
+</head>
+<body>
+
+<header>🔥 Loja DBE Revolution 🔥</header>
+
+<div class="container">
+
+<div class="kit">
+<div class="badge">⭐ ESPECIAL</div>
+<img src="progressão_divina.png">
+<h2>Progressão Divina</h2>
+<div class="price">R$4,90</div>
+<input id="n1" placeholder="Digite seu nick">
+<button onclick="comprar('https://mpago.la/1Y9F2KW','Progressão Divina','n1')">Comprar</button>
+<button class="copy" onclick="copiar('Progressão Divina','n1')">Copiar Msg</button>
+</div>
+
+<div class="kit">
+<img src="kit_base.png">
+<h2>Kit Base</h2>
+<div class="price">R$9,90</div>
+<input id="n2" placeholder="Digite seu nick">
+<button onclick="comprar('https://mpago.la/1sZAvxm','Kit Base','n2')">Comprar</button>
+<button class="copy" onclick="copiar('Kit Base','n2')">Copiar Msg</button>
+</div>
+
+<div class="kit">
+<div class="badge">🔥 MAIS VENDIDO</div>
+<img src="kit_lutador.png">
+<h2>Kit Lutador</h2>
+<div class="price">R$14,90</div>
+<input id="n3" placeholder="Digite seu nick">
+<button onclick="comprar('https://mpago.la/2tmAPdy','Kit Lutador','n3')">Comprar</button>
+<button class="copy" onclick="copiar('Kit Lutador','n3')">Copiar Msg</button>
+</div>
+
+<div class="kit">
+<div class="badge">🐉 TOP</div>
+<img src="kit_elite.png">
+<h2>Kit Supremo</h2>
+<div class="price">R$19,90</div>
+<input id="n4" placeholder="Digite seu nick">
+<button onclick="comprar('https://mpago.la/2DTh5qn','Kit Supremo','n4')">Comprar</button>
+<button class="copy" onclick="copiar('Kit Supremo','n4')">Copiar Msg</button>
+</div>
+
+</div>
+
+<footer>
+⚡ Após a compra, envie a mensagem no Discord  
+<br>
+<a class="discord-btn" href="https://discord.gg/Vtz2NQy9Nu" target="_blank">
+Entrar no Discord
+</a>
+</footer>
+
+<!-- BOTÃO FIXO -->
+<a href="https://discord.gg/Vtz2NQy9Nu" target="_blank" class="discord-fixo">
+💬 Discord
+</a>
+
+</body>
+  </html>
